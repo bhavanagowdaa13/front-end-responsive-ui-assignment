@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Instagram Creator Profile</title>
+
+<style>
+
+/* 1. Box Model Reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* 2. Mobile Base Styles */
+
+.component-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Instagram Header */
+
+.instagram-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background-color: white;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 15px 15px 0 0;
+}
+
+.instagram-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 19px;
+}
+
+.instagram-header h1 {
+    font-family: cursive;
+    font-size: 25px;
+}
+
+/* Profile Card */
+
+.profile-card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+}
+
+/* Profile Header */
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+}
+
+/* Avatar */
+
+.avatar {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e1306c;
+    padding: 3px;
+    transition: transform 0.25s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+/* Profile Details */
+
+.profile-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.username-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.username {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.role {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.bio {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.portfolio {
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Follow and Message Buttons */
+
+.profile-actions {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+}
+
+.profile-actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.follow-btn {
+    background-color: #2563eb;
+    color: white;
+}
+
+.message-btn {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.follow-btn:active {
+    transform: scale(0.96);
+}
+
+/* Profile Statistics */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 8px;
+    margin: 28px 0;
+    padding: 20px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.stat-box h2 {
+    font-size: 20px;
+}
+
+.stat-box p {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* Story Highlights */
+
+.highlights-title {
+    font-size: 17px;
+    margin-bottom: 16px;
+}
+
+.highlights {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 18px;
+}
+
+.highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.highlight-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 3px solid #e1306c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.highlight-item p {
+    font-size: 12px;
+    color: #475569;
+}
+
+/* Instagram Posts Section */
+
+.posts-title {
+    font-size: 17px;
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.posts-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+/* 3. Desktop Media Query Breakpoint */
+
+@media (min-width: 768px) {
+
+    .profile-card {
+        padding: 40px;
+    }
+
+    .instagram-header {
+        padding: 18px 30px;
+    }
+
+    .profile-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        text-align: left;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+    }
+
+    .profile-details {
+        flex: 1;
+    }
+
+    .username-row {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .profile-actions {
+        max-width: 280px;
+    }
+
+    .stats {
+        margin-top: 35px;
+    }
+
+    .stat-box h2 {
+        font-size: 24px;
+    }
+
+    .stat-box p {
+        font-size: 14px;
+    }
+
+    .posts-grid {
+        gap: 12px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="component-container">
+
+    <!-- Instagram Logo and Name -->
+
+    <header class="instagram-header">
+
+        <div class="instagram-icon">◎</div>
+
+        <h1>Instagram</h1>
+
+    </header>
+
+    <section class="profile-card">
+
+        <!-- Profile Header -->
+
+        <div class="profile-header">
+
+            <img
+                class="avatar"
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400"
+                alt="Creator profile avatar"
+            >
+
+            <div class="profile-details">
+
+                <div class="username-row">
+
+                    <h2 class="username">alex_designer</h2>
+
+                    <span class="role">UI Engineer</span>
+
+                </div>
+
+                <p class="bio">
+                    Alex Rivera • UI Engineer<br>
+                    Building web design systems and open source widgets.
+                </p>
+
+                <a href="#" class="portfolio">
+                    portfolio-alex.dev
+                </a>
+
+                <!-- Profile Buttons -->
+
+                <div class="profile-actions">
+
+                    <button class="follow-btn">Follow</button>
+
+                    <button class="message-btn">Message</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Profile Statistics -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h2>148</h2>
+                <p>Posts</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>12.4k</h2>
+                <p>Followers</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>420</h2>
+                <p>Following</p>
+            </div>
+
+        </div>
+
+        <!-- Story Highlights -->
+
+        <h2 class="highlights-title">Story Highlights</h2>
+
+        <div class="highlights">
+
+            <div class="highlight-item">
+                <div class="highlight-circle">🎨</div>
+                <p>Design</p>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-circle">💻</div>
+                <p>Projects</p>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-circle">💡</div>
+                <p>Work</p>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-circle">📚</div>
+                <p>Tips</p>
+            </div>
+
+            <div class="highlight-item">
+                <div class="highlight-circle">✨</div>
+                <p>More</p>
+            </div>
+
+        </div>
+
+        <!-- Instagram Posts -->
+
+        <h2 class="posts-title">Posts</h2>
+
+        <div class="posts-grid">
+
+            <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400"
+                alt="Creative workspace"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400"
+                alt="Laptop workspace"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400"
+                alt="Creative project"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=400"
+                alt="Writing and design"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400"
+                alt="Team working"
+            >
+
+            <img
+                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400"
+                alt="Modern office"
+            >
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Sneaker Product Card</title>
+
+<style>
+
+/* 1. Box Model Reset */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* 2. Mobile Base Styles */
+
+.component-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Product Card */
+
+.product-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Product Image */
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    background-color: #f1f5f9;
+}
+
+.product-image img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Image Hover Effect */
+
+.product-image img:hover {
+    transform: scale(1.04);
+}
+
+/* Popular Badge */
+
+.popular-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: #0f172a;
+    color: white;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Product Details */
+
+.product-details {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+}
+
+/* Category and Rating */
+
+.category-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.category {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.rating {
+    color: #e69b00;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Product Information */
+
+.product-info h1 {
+    font-size: 27px;
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.description {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Features */
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.feature {
+    background-color: #f1f5f9;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #334155;
+}
+
+/* Bottom Pricing Shelf */
+
+.bottom-shelf {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.price-section h2 {
+    font-size: 26px;
+    color: #0f172a;
+}
+
+.tax {
+    color: #94a3b8;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Add to Bag Button */
+
+.add-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #334155;
+}
+
+/* Button Active Effect */
+
+.add-button:active {
+    transform: scale(0.96);
+}
+
+/* 3. Desktop Media Query Breakpoint */
+
+@media (min-width: 768px) {
+
+    .product-card {
+        grid-template-columns: 1fr 1fr;
+        min-height: 440px;
+    }
+
+    .product-image img {
+        height: 100%;
+        min-height: 440px;
+    }
+
+    .product-details {
+        padding: 35px;
+    }
+
+    .product-info h1 {
+        font-size: 32px;
+    }
+
+    .bottom-shelf {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .add-button {
+        width: auto;
+        min-width: 145px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="component-container">
+
+    <section class="product-card">
+
+        <!-- Product Image -->
+
+        <div class="product-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900"
+                alt="Stylish athletic sneaker"
+            >
+
+            <span class="popular-badge">POPULAR</span>
+
+        </div>
+
+        <!-- Product Details -->
+
+        <div class="product-details">
+
+            <!-- Category and Rating -->
+
+            <div class="category-rating">
+
+                <span class="category">Footwear</span>
+
+                <span class="rating">4.9 ★</span>
+
+            </div>
+
+            <!-- Product Information -->
+
+            <div class="product-info">
+
+                <h1>Premium Everyday Sneakers</h1>
+
+                <p class="description">
+                    Step into comfort and style with these modern
+                    everyday sneakers. Designed for a lightweight
+                    feel and a stylish everyday look.
+                </p>
+
+            </div>
+
+            <!-- Features -->
+
+            <div class="features">
+
+                <span class="feature">Lightweight</span>
+
+                <span class="feature">Comfort Fit</span>
+
+                <span class="feature">Durable Sole</span>
+
+            </div>
+
+            <!-- Price and Button -->
+
+            <div class="bottom-shelf">
+
+                <div class="price-section">
+
+                    <h2>₹1,499</h2>
+
+                    <p class="tax">Tax included</p>
+
+                </div>
+
+                <button class="add-button">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>
